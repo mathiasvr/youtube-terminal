@@ -1,7 +1,7 @@
 {
   "name": "youtube-terminal",
   "version": "0.0.2",
-  "description": "Stream youtube videos as ascii art in the terminal!",
+  "description": "Stream YouTube videos as ascii art in the terminal!",
   "bin": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
