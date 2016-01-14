@@ -13,6 +13,8 @@ Stream YouTube videos as ascii art in the terminal!
 npm install -g youtube-terminal
 ```
 
+Be sure to have [FFmpeg](https://www.ffmpeg.org) installed as well.
+
 ## usage
 
 ```js
