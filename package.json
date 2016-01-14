@@ -1,0 +1,37 @@
+{
+  "name": "youtube-terminal",
+  "version": "0.0.1",
+  "description": "Stream youtube videos as ascii art in the terminal!",
+  "bin" : "./index.js", 
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "youtube",
+    "video",
+    "ascii",
+    "terminal",
+    "player",
+    "music"
+  ],
+  "author": "Mathias Rasmussen <mathiasvr@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathiasvr/youtube-terminal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mathiasvr/youtube-terminal/issues"
+  },
+  "homepage": "https://github.com/mathiasvr/youtube-terminal#readme",
+  "dependencies": {
+    "ascii-pixels": "^1.0.1",
+    "charm": "^1.0.0",
+    "fluent-ffmpeg": "^2.0.1",
+    "jpeg-js": "^0.1.1",
+    "jpeg-stream": "^0.1.0",
+    "speaker": "^0.2.6",
+    "youtube-crawler": "0.0.2",
+    "ytdl-core": "^0.7.9"
+  }
+}
