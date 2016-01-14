@@ -10,7 +10,7 @@ Stream youtube videos as ascii art in the terminal!
 ## install
 
 ```
-npm install youtube-terminal
+npm install -g youtube-terminal
 ```
 
 ## usage
@@ -18,6 +18,10 @@ npm install youtube-terminal
 ```js
 youtube-terminal 'cyanide and happiness'
 ```
+
+## notes
+
+Best viewed with a black on white colored theme, inverted colors will be supported in the future.
 
 ## license
 

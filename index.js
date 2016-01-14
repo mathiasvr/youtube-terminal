@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var ytdl = require('ytdl-core')
 var Speaker = require('speaker')
 var youtubeSearch = require('youtube-crawler')
@@ -13,7 +15,9 @@ if (process.argv.length > 2) {
     console.log('Playing:', results[0].title)
     play(results[0].link)
   })
-} else {console.log('yo')}
+} else {
+  console.log('Syntax: youtube-terminal "search query"')
+}
 
 function play (url) {
   ytdl.getInfo(url, function (err, info) {
