@@ -7,20 +7,25 @@ var pcmAudio = require('./lib/pcm-audio')
 var asciiVideo = require('./lib/ascii-video')
 
 var argv = require('minimist')(process.argv.slice(2), {
-  alias: { i: 'invert', c: 'contrast', w: 'width', h: 'help' },
-  boolean: ['invert', 'help']
+  alias: { l: 'link', i: 'invert', c: 'contrast', w: 'width' },
+  boolean: 'invert'
 })
-
-if (argv._.length < 1 || argv.help) printUsage()
 
 var query = argv._.join(' ')
 
-// search youtube and play the first result
-youtubeSearch(query, function (err, results) {
-  if (err) return console.error(err)
-  console.log('Playing:', results[0].title)
-  play(results[0].link)
-})
+if (argv.link) {
+  console.log('Playing:', argv.link)
+  play(argv.link)
+} else if (argv._.length > 0) {
+  // search youtube and play the first result
+  youtubeSearch(query, function (err, results) {
+    if (err) return console.error(err)
+    console.log('Playing:', results[0].title)
+    play(results[0].link)
+  })
+} else {
+  printUsage()
+}
 
 function play (url) {
   ytdl.getInfo(url, function (err, info) {
@@ -29,7 +34,6 @@ function play (url) {
     var audioItems = info.formats.filter(function (format) {
       // audio only
       return format.resolution === null
-    // format.type && format.type.startsWith('audio')
     }).sort(function (a, b) {
       // sort by audio quality
       return b.audioBitrate - a.audioBitrate
@@ -43,22 +47,24 @@ function play (url) {
       return a.container === 'webm' ? -1 : 1
     })
 
-    var bestAudio = audioItems[0]
+    var audio = audioItems[0] // highest bitrate
+    var video = videoItems[0] // lowest resolution
 
-    console.log('Audio quality: %s (%s)', bestAudio.audioBitrate + 'kbps', bestAudio.audioEncoding)
+    console.log('Video format: %s (%s)', video.resolution, video.encoding)
+    console.log('Audio quality: %s (%s)', audio.audioBitrate + 'kbps', audio.audioEncoding)
 
     var speaker = new Speaker({
       channels: 2,
       bitDepth: 16,
-      sampleRate: bestAudio.audioEncoding === 'opus' ? 48000 : 44100
+      sampleRate: audio.audioEncoding === 'opus' ? 48000 : 44100
     })
 
     // play ascii video
-    asciiVideo(videoItems[0].url, argv)
+    asciiVideo(video.url, argv)
 
     // TODO: avoid crude audio/video initial sync
     // play audio
-    setTimeout(function () { pcmAudio(bestAudio.url).pipe(speaker) }, 250)
+    setTimeout(function () { pcmAudio(audio.url).pipe(speaker) }, 250)
   })
 }
 
@@ -69,6 +75,7 @@ function printUsage () {
   console.log()
   console.log('Options:')
   console.log()
+  console.log('    -l, --link [url]         Use YouTube link instead of searching')
   console.log('    -i, --invert             Invert colors, recommended on dark background')
   console.log('    -c, --contrast [number]  Adjust video contrast [default: 128]')
   console.log('    -w, --width [number]     ASCII video character width [default: 80]')
