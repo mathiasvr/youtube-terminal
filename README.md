@@ -29,9 +29,6 @@ youtube-terminal [options] 'cyanide and happiness'
 -fps [number]            Video framerate [default: 16]
 ```
 
-`-i, --invert`            Invert colors, recommended on dark background
-`-c, --contrast [number]`  Adjust video contrast [default: 128]
-
 ## license
 
 MIT
