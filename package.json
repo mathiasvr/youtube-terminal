@@ -4,7 +4,7 @@
   "description": "Stream YouTube videos as ascii art in the terminal!",
   "bin": "./index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard"
   },
   "keywords": [
     "youtube",
@@ -30,6 +30,7 @@
     "fluent-ffmpeg": "^2.0.1",
     "jpeg-js": "^0.1.1",
     "jpeg-stream": "^0.1.0",
+    "minimist": "^1.2.0",
     "speaker": "^0.2.6",
     "youtube-crawler": "0.0.2",
     "ytdl-core": "^0.7.9"

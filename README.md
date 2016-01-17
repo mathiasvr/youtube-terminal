@@ -17,13 +17,20 @@ Be sure to have [FFmpeg](https://www.ffmpeg.org) installed as well.
 
 ## usage
 
-```js
-youtube-terminal 'cyanide and happiness'
+```
+youtube-terminal [options] 'cyanide and happiness'
 ```
 
-## notes
+###options
+```
+-i, --invert             Invert colors, recommended on dark background
+-c, --contrast [number]  Adjust video contrast [default: 128]
+-w, --width [number]     ASCII video character width [default: 80]
+-fps [number]            Video framerate [default: 16]
+```
 
-Best viewed with a black on white colored theme, inverted colors will be supported in the future.
+`-i, --invert`            Invert colors, recommended on dark background
+`-c, --contrast [number]`  Adjust video contrast [default: 128]
 
 ## license
 
