@@ -51,14 +51,13 @@ function play (url) {
 
     var speaker = new Speaker()
 
+    var updateSpeaker = function (codec) {
+      speaker.channels = codec.audio_details[2] === 'mono' ? 1 : 2
+      speaker.sampleRate = parseInt(codec.audio_details[1].match(/\d+/)[0], 10)
+    }
+
     // play audio
-    pcmAudio(audio.url)
-      .on('codecData', function (data) {
-        // update speaker settings
-        speaker.channels = data.audio_details[2] === 'mono' ? 1 : 2
-        speaker.sampleRate = parseInt(data.audio_details[1].match(/\d+/)[0], 10)
-      })
-      .pipe(speaker)
+    pcmAudio(audio.url).on('codecData', updateSpeaker).pipe(speaker)
 
     // play ascii video
     asciiVideo(video.url, {
