@@ -77,7 +77,7 @@ function printUsage () {
   console.log()
   console.log('    -l, --link [url]         Use YouTube link instead of searching')
   console.log('    -i, --invert             Invert colors, recommended on dark background')
-  console.log('    -c, --contrast [number]  Adjust video contrast [default: 128]')
+  console.log('    -c, --contrast [percent] Adjust video contrast [default: 50]')
   console.log('    -w, --width [number]     ASCII video character width [default: 80]')
   console.log('    -fps [number]            Video framerate [default: 16]')
   console.log()
