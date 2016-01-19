@@ -3,21 +3,23 @@
 var ytdl = require('ytdl-core')
 var Speaker = require('speaker')
 var youtubeSearch = require('youtube-crawler')
+var debug = require('debug')('yt-term')
 var pcmAudio = require('./lib/pcm-audio')
 var asciiVideo = require('./lib/ascii-video')
 
+// command line options
 var argv = require('minimist')(process.argv.slice(2), {
   alias: { l: 'link', i: 'invert', c: 'contrast', w: 'width' },
   boolean: 'invert'
 })
 
-var query = argv._.join(' ')
-
 if (argv.link) {
+  // play from youtube link
   console.log('Playing:', argv.link)
   play(argv.link)
 } else if (argv._.length > 0) {
   // search youtube and play the first result
+  var query = argv._.join(' ')
   youtubeSearch(query, function (err, results) {
     if (err) return console.error(err)
     console.log('Playing:', results[0].title)
@@ -31,40 +33,40 @@ function play (url) {
   ytdl.getInfo(url, function (err, info) {
     if (err) return console.error(err)
 
-    var audioItems = info.formats.filter(function (format) {
-      // audio only
-      return format.resolution === null
-    }).sort(function (a, b) {
-      // sort by audio quality
-      return b.audioBitrate - a.audioBitrate
-    })
+    // audio only, sorted by quality
+    var audioItems = info.formats
+      .filter(function (format) { return format.resolution === null })
+      .sort(function (a, b) { return b.audioBitrate - a.audioBitrate })
 
-    var videoItems = info.formats.filter(function (format) {
-      // lowest resolution video only
-      return format.resolution === '144p' && format.audioBitrate === null
-    }).sort(function (a, b) {
-      // prefer webm
-      return a.container === 'webm' ? -1 : 1
-    })
+    // low resolution video only, webm prefered
+    var videoItems = info.formats
+      .filter(function (format) { return format.resolution === '144p' && format.audioBitrate === null })
+      .sort(function (a, b) { return a.container === 'webm' ? -1 : 1 })
 
     var audio = audioItems[0] // highest bitrate
     var video = videoItems[0] // lowest resolution
 
-    console.log('Video format: %s (%s)', video.resolution, video.encoding)
-    console.log('Audio quality: %s (%s)', audio.audioBitrate + 'kbps', audio.audioEncoding)
+    debug('Video format: %s (%s)', video.resolution, video.encoding)
+    debug('Audio quality: %s (%s)', audio.audioBitrate + 'kbps', audio.audioEncoding)
 
-    var speaker = new Speaker({
-      channels: 2,
-      bitDepth: 16,
-      sampleRate: audio.audioEncoding === 'opus' ? 48000 : 44100
-    })
+    var speaker = new Speaker()
+
+    // play audio
+    pcmAudio(audio.url)
+      .on('codecData', function (data) {
+        // update speaker settings
+        speaker.channels = data.audio_details[2] === 'mono' ? 1 : 2
+        speaker.sampleRate = parseInt(data.audio_details[1].match(/\d+/)[0], 10)
+      })
+      .pipe(speaker)
 
     // play ascii video
-    asciiVideo(video.url, argv)
-
-    // TODO: avoid crude audio/video initial sync
-    // play audio
-    setTimeout(function () { pcmAudio(audio.url).pipe(speaker) }, 250)
+    asciiVideo(video.url, {
+      fps: argv.fps || 12,
+      width: argv.width || 80,
+      contrast: (argv.contrast || 50) * 2.55,
+      invert: argv.invert
+    })
   })
 }
 
@@ -79,7 +81,7 @@ function printUsage () {
   console.log('    -i, --invert             Invert colors, recommended on dark background')
   console.log('    -c, --contrast [percent] Adjust video contrast [default: 50]')
   console.log('    -w, --width [number]     ASCII video character width [default: 80]')
-  console.log('    -fps [number]            Video framerate [default: 16]')
+  console.log('    -fps [number]            Playback framerate [default: 12]')
   console.log()
   process.exit(0)
 }
