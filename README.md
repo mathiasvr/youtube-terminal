@@ -17,6 +17,8 @@ Be sure to have [FFmpeg](https://www.ffmpeg.org) installed as well.
 
 ## usage
 
+YouTube Terminal will play the first found search result:
+
 ```
 youtube-terminal [options] 'cyanide and happiness'
 ```
