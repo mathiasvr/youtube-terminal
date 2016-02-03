@@ -47,6 +47,7 @@ function play (url) {
     var video = videoItems[0] // lowest resolution
 
     debug('Video format: %s (%s)', video.resolution, video.encoding)
+        console.log('Video all: ', video)
     debug('Audio quality: %s (%s)', audio.audioBitrate + 'kbps', audio.audioEncoding)
 
     var speaker = new Speaker()
@@ -58,12 +59,12 @@ function play (url) {
 
     // play audio
     pcmAudio(audio.url).on('codecData', updateSpeaker).pipe(speaker)
-
+    
     // play ascii video
-    asciiVideo(video.url, {
-      fps: argv.fps || 12,
+    asciiVideo(video, {
+      fps: argv.fps || video.fps || 12,
       width: argv.width || 80,
-      contrast: (argv.contrast || 50) * 2.55,
+      contrast: (argv.contrast || 50) * 2.55, // percent to byte range
       invert: argv.invert
     })
   })
@@ -80,7 +81,7 @@ function printUsage () {
   console.log('    -i, --invert             Invert colors, recommended on dark background')
   console.log('    -c, --contrast [percent] Adjust video contrast [default: 50]')
   console.log('    -w, --width [number]     ASCII video character width [default: 80]')
-  console.log('    --fps [number]           Playback framerate [default: 12]')
+  console.log('    --fps [number]           Adjust playback framerate')
   console.log()
   process.exit(0)
 }
