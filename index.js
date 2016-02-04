@@ -46,8 +46,7 @@ function play (url) {
     var audio = audioItems[0] // highest bitrate
     var video = videoItems[0] // lowest resolution
 
-    debug('Video format: %s (%s)', video.resolution, video.encoding)
-        console.log('Video all: ', video)
+    debug('Video format: %s [%s] (%s)', video.resolution, video.size, video.encoding)
     debug('Audio quality: %s (%s)', audio.audioBitrate + 'kbps', audio.audioEncoding)
 
     var speaker = new Speaker()
@@ -59,7 +58,7 @@ function play (url) {
 
     // play audio
     pcmAudio(audio.url).on('codecData', updateSpeaker).pipe(speaker)
-    
+
     // play ascii video
     asciiVideo(video, {
       fps: argv.fps || video.fps || 12,
