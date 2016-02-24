@@ -27,11 +27,12 @@
   "dependencies": {
     "ascii-pixels": "^1.1.0",
     "charm": "^1.0.0",
+    "debug": "^2.2.0",
     "fluent-ffmpeg": "^2.0.1",
     "minimist": "^1.2.0",
     "speaker": "^0.2.6",
     "stream-throttle": "^0.1.3",
     "youtube-crawler": "0.0.2",
-    "ytdl-core": "^0.7.9"
+    "ytdl-core": "^0.7.10"
   }
 }
