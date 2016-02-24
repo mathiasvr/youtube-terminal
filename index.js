@@ -80,7 +80,7 @@ function printUsage () {
   console.log('    -i, --invert             Invert colors, recommended on dark background')
   console.log('    -c, --contrast [percent] Adjust video contrast [default: 50]')
   console.log('    -w, --width [number]     ASCII video character width [default: 80]')
-  console.log('    --fps [number]           Adjust playback framerate')
+  console.log('    --fps [number]           Adjust playback frame rate')
   console.log()
   process.exit(0)
 }
