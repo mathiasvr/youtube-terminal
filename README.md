@@ -7,6 +7,8 @@ Stream YouTube videos as ascii art in the terminal!
 
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
+Feedback is very welcome! :-)
+
 ## install
 
 ```
@@ -29,11 +31,13 @@ youtube-terminal [options] 'cyanide and happiness'
 -i, --invert             Invert colors, recommended on dark background
 -c, --contrast [percent] Adjust video contrast [default: 50]
 -w, --width [number]     ASCII video character width [default: 80]
+-m, --mute               Disable audio playback
 --fps [number]           Adjust playback frame rate
 ```
 
 ## todos
 
+- [ ] Automatic scaling (terminal width)
 - [ ] Improve video playback (consistent frame interval)
 - [ ] Video/Audio synchronization
 
