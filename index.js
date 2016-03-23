@@ -50,14 +50,26 @@ function playVideo (info) {
 
   debug('Video format: %s [%s] (%s) %sfps', video.resolution, video.size, video.encoding, video.fps)
 
-  // play video as ascii
-  asciiVideo(video, {
+  // TODO: maybe it is needed to null-check video.size and m, and default to '256x144'
+  var size = video.size.match(/^(\d+)x(\d+)$/)
+
+  var videoInfo = {
+    url: video.url,
+    width: size[1],
+    height: size[2]
+  }
+
+  var videoOptions = {
     // TODO: some (old?) videos have fps incorrectly set to 1.
     fps: argv.fps /* || video.fps */ || 12,
-    width: argv.width || 80,
+    // TODO: width does not work well if video height is larger than terminal window
+    width: argv.width || process.stdout.columns || 80,
     contrast: (argv.contrast || 50) * 2.55, // percent to byte
     invert: argv.invert
-  })
+  }
+
+  // play video as ascii
+  asciiVideo(videoInfo, videoOptions)
 }
 
 function playAudio (info) {
@@ -92,7 +104,7 @@ function printUsage () {
   console.log('    -l, --link [url]         Use YouTube link instead of searching')
   console.log('    -i, --invert             Invert colors, recommended on dark background')
   console.log('    -c, --contrast [percent] Adjust video contrast [default: 50]')
-  console.log('    -w, --width [number]     ASCII video character width [default: 80]')
+  console.log('    -w, --width [number]     ASCII video character width')
   console.log('    -m, --mute               Disable audio playback')
   console.log('    --fps [number]           Adjust playback frame rate')
   console.log()

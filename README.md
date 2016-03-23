@@ -1,7 +1,9 @@
-# YouTube Terminal [![npm][npm-image]][npm-url]
+# YouTube Terminal [![npm][npm-img]][npm-url] [![license][lic-img]][lic-url]
 
-[npm-image]: https://img.shields.io/npm/v/youtube-terminal.svg
+[npm-img]: https://img.shields.io/npm/v/youtube-terminal.svg
 [npm-url]: https://www.npmjs.com/package/youtube-terminal
+[lic-img]: http://img.shields.io/:license-MIT-blue.svg
+[lic-url]: http://mvr.mit-license.org
 
 Stream YouTube videos as ascii art in the terminal!
 
@@ -30,7 +32,7 @@ youtube-terminal [options] 'cyanide and happiness'
 -l, --link [url]         Use YouTube link instead of searching
 -i, --invert             Invert colors, recommended on dark background
 -c, --contrast [percent] Adjust video contrast [default: 50]
--w, --width [number]     ASCII video character width [default: 80]
+-w, --width [number]     ASCII video character width
 -m, --mute               Disable audio playback
 --fps [number]           Adjust playback frame rate
 ```
