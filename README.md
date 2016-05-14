@@ -39,7 +39,6 @@ youtube-terminal [options] 'cyanide and happiness'
 
 ## todos
 
-- [ ] Automatic scaling (terminal width)
 - [ ] Improve video playback (consistent frame interval)
 - [ ] Video/Audio synchronization
 
