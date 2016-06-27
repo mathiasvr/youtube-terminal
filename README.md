@@ -1,7 +1,9 @@
-# YouTube Terminal [![npm][npm-img]][npm-url] [![license][lic-img]][lic-url]
+# YouTube Terminal [![npm][npm-img]][npm-url] [![dependencies][dep-img]][dep-url] [![license][lic-img]][lic-url]
 
 [npm-img]: https://img.shields.io/npm/v/youtube-terminal.svg
 [npm-url]: https://www.npmjs.com/package/youtube-terminal
+[dep-img]: https://david-dm.org/mathiasvr/youtube-terminal.svg
+[dep-url]: https://david-dm.org/mathiasvr/youtube-terminal
 [lic-img]: http://img.shields.io/:license-MIT-blue.svg
 [lic-url]: http://mvr.mit-license.org
 
@@ -9,7 +11,7 @@ Stream YouTube videos as ascii art in the terminal!
 
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
-Feedback is very welcome! :-)
+Feedback is very welcome!
 
 ## install
 
@@ -18,6 +20,11 @@ npm install -g youtube-terminal
 ```
 
 Be sure to have [FFmpeg](https://www.ffmpeg.org) installed as well.
+
+Ubuntu/Debian users should have ALSA installed as well:
+```
+sudo apt-get install libasound2-dev
+```
 
 ## usage
 
