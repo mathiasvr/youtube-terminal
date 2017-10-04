@@ -4,14 +4,10 @@
 [npm-url]: https://www.npmjs.com/package/youtube-terminal
 [dep-img]: https://david-dm.org/mathiasvr/youtube-terminal.svg
 [dep-url]: https://david-dm.org/mathiasvr/youtube-terminal
-[lic-img]: http://img.shields.io/:license-MIT-blue.svg
-[lic-url]: http://mvr.mit-license.org
+[lic-img]: https://img.shields.io/:license-MIT-blue.svg
+[lic-url]: https://mvr.mit-license.org
 
 Stream YouTube videos as ascii art in the terminal!
-
-[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
-
-Feedback is very welcome!
 
 ## install
 
@@ -43,6 +39,14 @@ youtube-terminal [options] 'cyanide and happiness'
 -m, --mute               Disable audio playback
 --fps [number]           Adjust playback frame rate
 ```
+
+### Which background color does your terminal have?
+I am considering inverting the video colors for better viewing on a dark background by default, but first I would like to know how your terminal looks?
+
+[![](https://m131jyck4m.execute-api.us-west-2.amazonaws.com/prod/poll/01BVKCQ5K0XJFVNQXKAK3VMPSY/Dark)](https://m131jyck4m.execute-api.us-west-2.amazonaws.com/prod/poll/01BVKCQ5K0XJFVNQXKAK3VMPSY/Dark/vote)
+[![](https://m131jyck4m.execute-api.us-west-2.amazonaws.com/prod/poll/01BVKCQ5K0XJFVNQXKAK3VMPSY/Bright)](https://m131jyck4m.execute-api.us-west-2.amazonaws.com/prod/poll/01BVKCQ5K0XJFVNQXKAK3VMPSY/Bright/vote)
+
+If more people uses a dark background, the effect of `--invert` will be swapped in a future release.
 
 ## todos
 
