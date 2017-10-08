@@ -1,6 +1,6 @@
 {
   "name": "youtube-terminal",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Stream YouTube videos as ascii art in the terminal!",
   "bin": "./index.js",
   "scripts": {
