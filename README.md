@@ -1,11 +1,8 @@
-# YouTube Terminal [![npm][npm-img]][npm-url] [![dependencies][dep-img]][dep-url] [![license][lic-img]][lic-url]
-
-[npm-img]: https://img.shields.io/npm/v/youtube-terminal.svg
-[npm-url]: https://www.npmjs.com/package/youtube-terminal
-[dep-img]: https://david-dm.org/mathiasvr/youtube-terminal.svg
-[dep-url]: https://david-dm.org/mathiasvr/youtube-terminal
-[lic-img]: https://img.shields.io/:license-MIT-blue.svg
-[lic-url]: https://mvr.mit-license.org
+# YouTube Terminal
+[![npm](https://img.shields.io/npm/v/youtube-terminal.svg)](https://www.npmjs.com/package/youtube-terminal)
+![downloads](https://img.shields.io/npm/dt/youtube-terminal.svg)
+[![dependencies](https://david-dm.org/mathiasvr/youtube-terminal.svg)](https://david-dm.org/mathiasvr/youtube-terminal)
+[![license](http://img.shields.io/:license-MIT-blue.svg)](http://mvr.mit-license.org)
 
 Stream YouTube videos as ascii art in the terminal!
 
