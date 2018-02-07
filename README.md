@@ -2,7 +2,7 @@
 [![npm](https://img.shields.io/npm/v/youtube-terminal.svg)](https://www.npmjs.com/package/youtube-terminal)
 ![downloads](https://img.shields.io/npm/dt/youtube-terminal.svg)
 [![dependencies](https://david-dm.org/mathiasvr/youtube-terminal.svg)](https://david-dm.org/mathiasvr/youtube-terminal)
-[![license](http://img.shields.io/:license-MIT-blue.svg)](http://mvr.mit-license.org)
+[![license](https://img.shields.io/:license-MIT-blue.svg)](https://mvr.mit-license.org)
 
 Stream YouTube videos as ascii art in the terminal!
 
