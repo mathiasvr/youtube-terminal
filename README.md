@@ -30,25 +30,14 @@ youtube-terminal [options] 'cyanide and happiness'
 ### options
 ```
 -l, --link [url]         Use YouTube link instead of searching
--i, --invert             Invert colors, recommended on dark background
+-i, --invert             Invert colors, recommended on white background
 -c, --contrast [percent] Adjust video contrast [default: 50]
 -w, --width [number]     ASCII video character width
 -m, --mute               Disable audio playback
 --fps [number]           Adjust playback frame rate
 ```
 
-### Which background color does your terminal have?
-I am considering inverting the video colors for better viewing on a dark background by default, but first I would like to know how your terminal looks?
-
-[![](https://m131jyck4m.execute-api.us-west-2.amazonaws.com/prod/poll/01BVKCQ5K0XJFVNQXKAK3VMPSY/Dark)](https://m131jyck4m.execute-api.us-west-2.amazonaws.com/prod/poll/01BVKCQ5K0XJFVNQXKAK3VMPSY/Dark/vote)
-[![](https://m131jyck4m.execute-api.us-west-2.amazonaws.com/prod/poll/01BVKCQ5K0XJFVNQXKAK3VMPSY/Bright)](https://m131jyck4m.execute-api.us-west-2.amazonaws.com/prod/poll/01BVKCQ5K0XJFVNQXKAK3VMPSY/Bright/vote)
-
-If more people uses a dark background, the effect of `--invert` will be swapped in a future release.
-
-## todos
-
-- [ ] Improve video playback (consistent frame interval)
-- [ ] Video/Audio synchronization
+> Note that setting the `--invert` flag had the opposite effect in earlier releases, and was changed based on [this poll](https://github.com/mathiasvr/youtube-terminal/tree/v0.5.2#which-background-color-does-your-terminal-have).
 
 ## related
 

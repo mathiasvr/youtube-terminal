@@ -65,7 +65,7 @@ function playVideo (info) {
     // TODO: width does not work well if video height is larger than terminal window
     width: argv.width || process.stdout.columns || 80,
     contrast: (argv.contrast || 50) * 2.55, // percent to byte
-    invert: argv.invert
+    invert: !argv.invert
   }
 
   // play video as ascii
@@ -102,7 +102,7 @@ function printUsage () {
   console.log('Options:')
   console.log()
   console.log('    -l, --link [url]         Use YouTube link instead of searching')
-  console.log('    -i, --invert             Invert colors, recommended on dark background')
+  console.log('    -i, --invert             Invert colors, recommended on white background')
   console.log('    -c, --contrast [percent] Adjust video contrast [default: 50]')
   console.log('    -w, --width [number]     ASCII video character width')
   console.log('    -m, --mute               Disable audio playback')
