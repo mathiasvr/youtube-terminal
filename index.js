@@ -9,15 +9,17 @@ var asciiVideo = require('./lib/ascii-video')
 
 // command line options
 var argv = require('minimist')(process.argv.slice(2), {
-  alias: { l: 'link', i: 'invert', c: 'contrast', w: 'width', m: 'mute' },
+  alias: { l: 'link', i: 'invert', c: 'contrast', w: 'width', m: 'mute', h: 'help' },
   boolean: ['invert', 'mute']
 })
 
-if (argv.link) {
+if (argv.help || (argv._.length <= 0 && !argv.link)) {
+  printUsage()
+} else if (argv.link) {
   // play from youtube link
   console.log('Playing:', argv.link)
   play(argv.link)
-} else if (argv._.length > 0) {
+} else {
   // search youtube and play the first result
   var query = argv._.join(' ')
   youtubeSearch(query, function (err, results) {
@@ -25,8 +27,6 @@ if (argv.link) {
     console.log('Playing:', results[0].title)
     play(results[0].link)
   })
-} else {
-  printUsage()
 }
 
 function play (url) {
@@ -107,6 +107,7 @@ function printUsage () {
   console.log('    -w, --width [number]     ASCII video character width')
   console.log('    -m, --mute               Disable audio playback')
   console.log('    --fps [number]           Adjust playback frame rate')
+  console.log('    -h, --help               Display this usage information')
   console.log()
   process.exit(0)
 }
