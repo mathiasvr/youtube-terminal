@@ -64,7 +64,7 @@ function playVideo (info) {
     fps: argv.fps /* || video.fps */ || 12,
     // TODO: width does not work well if video height is larger than terminal window
     width: argv.width || process.stdout.columns || 80,
-    contrast: (argv.contrast || 50) * 2.55, // percent to byte
+    contrast: (argv.contrast || 35) * 2.55, // percent to byte
     invert: !argv.invert
   }
 
@@ -103,7 +103,7 @@ function printUsage () {
   console.log()
   console.log('    -l, --link [url]         Use YouTube link instead of searching')
   console.log('    -i, --invert             Invert colors, recommended on white background')
-  console.log('    -c, --contrast [percent] Adjust video contrast [default: 50]')
+  console.log('    -c, --contrast [percent] Adjust video contrast [default: 35]')
   console.log('    -w, --width [number]     ASCII video character width')
   console.log('    -m, --mute               Disable audio playback')
   console.log('    --fps [number]           Adjust playback frame rate')

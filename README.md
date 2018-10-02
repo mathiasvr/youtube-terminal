@@ -18,7 +18,7 @@ $ youtube-terminal [options] 'cyanide and happiness'
 ```
 -l, --link [url]         Use YouTube link instead of searching
 -i, --invert             Invert colors, recommended on white background
--c, --contrast [percent] Adjust video contrast [default: 50]
+-c, --contrast [percent] Adjust video contrast [default: 35]
 -w, --width [number]     ASCII video character width
 -m, --mute               Disable audio playback
 --fps [number]           Adjust playback frame rate
