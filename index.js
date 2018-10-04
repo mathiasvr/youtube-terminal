@@ -9,8 +9,9 @@ var asciiVideo = require('./lib/ascii-video')
 
 // command line options
 var argv = require('minimist')(process.argv.slice(2), {
+  // TODO: maybe use c to alias color instead of contrast
   alias: { l: 'link', i: 'invert', c: 'contrast', w: 'width', m: 'mute', h: 'help' },
-  boolean: ['invert', 'mute']
+  boolean: ['invert', 'mute', 'color', 'help']
 })
 
 if (argv.help || (argv._.length <= 0 && !argv.link)) {
@@ -65,7 +66,8 @@ function playVideo (info) {
     // TODO: width does not work well if video height is larger than terminal window
     width: argv.width || process.stdout.columns || 80,
     contrast: (argv.contrast || 35) * 2.55, // percent to byte
-    invert: !argv.invert
+    invert: !argv.invert,
+    color: argv.color
   }
 
   // play video as ascii
@@ -102,7 +104,8 @@ function printUsage () {
   console.log('Options:')
   console.log()
   console.log('    -l, --link [url]         Use YouTube link instead of searching')
-  console.log('    -i, --invert             Invert colors, recommended on white background')
+  console.log('    -i, --invert             Invert brightness, recommended on white background')
+  console.log('    --color                  Use 16 terminal colors')
   console.log('    -c, --contrast [percent] Adjust video contrast [default: 35]')
   console.log('    -w, --width [number]     ASCII video character width')
   console.log('    -m, --mute               Disable audio playback')
