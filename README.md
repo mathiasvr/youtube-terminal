@@ -15,14 +15,15 @@ $ youtube-terminal [options] 'cyanide and happiness'
 ```
 
 ### options
-```
--l, --link [url]         Use YouTube link instead of searching
--i, --invert             Invert colors, recommended on white background
--c, --contrast [percent] Adjust video contrast [default: 35]
--w, --width [number]     ASCII video character width
--m, --mute               Disable audio playback
---fps [number]           Adjust playback frame rate
-```
+    -l, --link [url]         Use YouTube link instead of searching
+    -i, --invert             Invert brightness, recommended on white background
+        --color              Use 16 terminal colors [experimental]
+    -c, --contrast [percent] Adjust video contrast [default: 35]
+    -w, --width [number]     ASCII video character width
+    -m, --mute               Disable audio playback
+        --fps [number]       Adjust playback frame rate
+    -h, --help               Display this usage information
+
 > Note that setting the `--invert` flag had the opposite effect in earlier releases, and was changed based on [this poll](https://github.com/mathiasvr/youtube-terminal/tree/v0.5.2#which-background-color-does-your-terminal-have).
 
 ## install
