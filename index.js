@@ -14,7 +14,9 @@ var argv = require('minimist')(process.argv.slice(2), {
   boolean: ['invert', 'mute', 'color', 'help']
 })
 
-if (argv.help || (argv._.length <= 0 && !argv.link)) {
+var wrongType = typeof argv.c === 'string' || typeof argv.w === 'string'
+
+if (argv.help || (argv._.length <= 0 && !argv.link) || wrongType) {
   printUsage()
 } else if (argv.link) {
   // play from youtube link
